@@ -8,11 +8,15 @@ import java.awt.*;
  */
 public class MyPanel extends JPanel {
     public MyPanel() {
+        Board board = new Board();
+        board.createNewBoard(30);
+        
         setPreferredSize(new Dimension(800, 600));
         
-//        JLabel label = new JLabel( icon, JLabel.CENTER);
+        Kid kid = new Kid();
+        JLabel label = new JLabel( kid.getIcon(), JLabel.CENTER);
         
-//        add(label);
+        add(label);
     }
     
     

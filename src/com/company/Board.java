@@ -5,13 +5,14 @@ package com.company;
  */
 public class Board {
     
-    private int[][] board;
+    private Char[][] board;
     private int size;
-    private static Board ourInstance = new Board();
+    public int numberOfCharsOnBoard;
 
     public void createNewBoard(int size) {
         this.size = size;
-        board = new int[size][size];
+        this.numberOfCharsOnBoard = 0;
+        this.board = new Char[size][size];
         
         fillTable0();
     }
@@ -19,17 +20,34 @@ public class Board {
     private void fillTable0() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                board[i][j] = 0;
+                board[i][j] = null;
             }
         }
     }
 
-    public static Board getInstance() {
-        return ourInstance;
+    public Char get(int x, int y) {
+        return board[x][y];
+    }
+    
+    public void setToRandomEmptyPlace(Char kid) {
+        if(emptyPlaces() == 0) return;
+        
+        Point point = new Point(0,0);
+        while( board[point.x][point.y] != null )
+            point.generateRandomPosition(size);
+            
+        board[point.x][point.y] = kid;
+        numberOfCharsOnBoard++;
     }
 
-
-    public int get(int x, int y) {
-        return board[x][y];
+    private int emptyPlaces() {
+        int count = 0;
+        
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if(board[i][j] == null) ++count;
+            }
+        }
+        return count;
     }
 }
