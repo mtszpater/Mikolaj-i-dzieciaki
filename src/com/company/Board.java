@@ -13,11 +13,10 @@ public class Board {
         this.size = size;
         this.numberOfCharsOnBoard = 0;
         this.board = new Char[size][size];
-        
-        fillTable0();
+        fillTable();
     }
 
-    private void fillTable0() {
+    private void fillTable() {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 board[i][j] = null;
@@ -25,12 +24,12 @@ public class Board {
         }
     }
 
-    public Char get(int x, int y) {
-        return board[x][y];
+    public Char get(Point point) {
+        return board[point.x][point.y];
     }
     
-    public void setToRandomEmptyPlace(Char kid) {
-        if(emptyPlaces() == 0) return;
+    public Point setToRandomEmptyPlace(Char kid) {
+        if(emptyPlaces() == 0) return null;
         
         Point point = new Point(0,0);
         while( board[point.x][point.y] != null )
@@ -38,6 +37,9 @@ public class Board {
             
         board[point.x][point.y] = kid;
         numberOfCharsOnBoard++;
+        
+        return point;
+
     }
 
     private int emptyPlaces() {

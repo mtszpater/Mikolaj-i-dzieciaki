@@ -1,6 +1,8 @@
 package com.company;
 
-import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * author @pater
@@ -9,18 +11,19 @@ abstract class Char {
     
     protected String image;
 
-    private ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = getClass().getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
+    private BufferedImage createImageIcon() {
+        try {
+            return ImageIO.read(getClass().getResource(image));
         }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return null;
     }
     
-    public ImageIcon getIcon(){
-        ImageIcon icon = createImageIcon(image);
+    public BufferedImage getIcon(){
+        BufferedImage icon = createImageIcon();
         return icon;
     }
 }

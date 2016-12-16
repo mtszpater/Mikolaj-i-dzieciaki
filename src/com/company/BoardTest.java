@@ -13,14 +13,14 @@ public class BoardTest {
     public void ShouldBeEmpty(){
         Board board = new Board();
         board.createNewBoard(10);
-        assertEquals(board.get(1,1), null);
+        assertEquals(board.get(new Point(1,1)), null);
     }
     
     @Test
     public void CornerShouldBeEmpty(){
         Board board = new Board();
         board.createNewBoard(10);
-        assertEquals(board.get(9,9), null);
+        assertEquals(board.get(new Point(9,9)), null);
     }
 
     @Test
