@@ -18,9 +18,6 @@ public class MyPanel extends JPanel {
         
         setPreferredSize(new Dimension(800, 600));
         
-        Kid kid = new Kid();
-        
-        
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -32,10 +29,7 @@ public class MyPanel extends JPanel {
             
             Point point = board.setToRandomEmptyPlace(kid);
             
-            g.drawImage(kid.getIcon(),point.x * 48, point.y * 48,
-                    point.x * 48+ 48, point.y * 48+ 48,
-                    point.x * 48, point.y * 48,
-                    point.x * 48+ 48,  point.y * 48+ 48,  null);
+            g.drawImage(kid.getIcon(),point.x * 26, point.y * 26, 48, 48,  null);
         }
     }
     
