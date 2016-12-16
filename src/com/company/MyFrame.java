@@ -9,6 +9,7 @@ public class MyFrame extends JFrame {
     public MyFrame() {
         super("Rysowanie");
         JPanel panel = new MyPanel();
+        setResizable(false);
         add(panel);
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
