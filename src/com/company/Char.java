@@ -19,7 +19,6 @@ public abstract class Char {
         catch (IOException e) {
             e.printStackTrace();
         }
-        
         return null;
     }
     
@@ -30,5 +29,21 @@ public abstract class Char {
 
     public void setPosition(Point position) {
         this.position = position;
+    }
+
+    public void moveLeft() { 
+        this.position.x -= 1;
+    };
+
+    public void moveRight(){
+        this.position.x += 1;
+    }
+    
+    public void moveUp(){
+        this.position.y += 1;
+    }
+    
+    public void moveDown(){
+        this.position.y -= 1;
     }
 }
