@@ -34,10 +34,6 @@ public class MyPanel extends JPanel {
 
         Point point = board.setToRandomEmptyPlace(santa);
         g.drawImage(santa.getIcon(),point.x * 26, point.y * 20, 24, 24,  null);
-        
-        
-        
-        
     }
     
 }

@@ -7,9 +7,10 @@ import java.io.IOException;
 /**
  * author @pater
  */
-abstract class Char {
+public abstract class Char {
     
-    protected String image;
+    public String image;
+    public Point position;
 
     private BufferedImage createImageIcon() {
         try {
@@ -25,5 +26,9 @@ abstract class Char {
     public BufferedImage getIcon(){
         BufferedImage icon = createImageIcon();
         return icon;
+    }
+
+    public void setPosition(Point position) {
+        this.position = position;
     }
 }
