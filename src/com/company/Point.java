@@ -14,23 +14,39 @@ public class Point {
         this.y = y;
     }
     
-    public void generateRandomPosition(int size){
+    public void generateRandomPosition(){
         Random random = new Random();
-        x = random.nextInt(size);
-        y = random.nextInt(size);
+        x = random.nextInt(Configuration.BOARD_SIZE);
+        y = random.nextInt(Configuration.BOARD_SIZE);
     }
 
-    public void setX(int x) {
-        if( x > 30 ) x = (x-1) % 30;
-        if( x < 0 ) x = (x%30) + 30;
-        
-        this.x = x;
+    public void setX(int arg) {
+        arg = changeToPointInRange(arg);
+        this.x = arg;
     }
 
-    public void setY(int y) {
-        if( y > 30 ) y = (y-1) % 30;
-        if( y < 0 ) y = (y%30) + 30;
+    public void setY(int arg) {
+        arg = changeToPointInRange(arg);
+        this.y = arg;
+    }
+
+    private int changeToPointInRange(int arg) {
+        if(isBiggerThanBoardSize(arg)) arg = ( arg-1 ) % Configuration.BOARD_SIZE;
+        if(isSmallerThanBoardSize(arg)) arg = (arg % Configuration.BOARD_SIZE) + Configuration.BOARD_SIZE;
+        if(isInCorner(arg)) arg = 0;
         
-        this.y = y;
+        return arg;
+    }
+
+    private boolean isBiggerThanBoardSize(int arg) {
+        return arg > Configuration.BOARD_SIZE;
+    }
+
+    private boolean isSmallerThanBoardSize(int arg) {
+        return arg < Configuration.BOARD_START;
+    }
+
+    private boolean isInCorner(int arg) {
+        return arg == 30;
     }
 }

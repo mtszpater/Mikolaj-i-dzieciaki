@@ -25,45 +25,6 @@ public class CharTest {
         assertEquals(kid.position.y, 0);
     }
     
-    @Test
-    public void MoveLeft(){
-        Char kid = new Kid();
-        kid.setPosition( new Point (5,5) );
-        
-        kid.moveLeft();
-        assertEquals( kid.position.x,  4);
-        assertEquals( kid.position.y,  5);
-    }
-
-    @Test
-    public void MoveRight(){
-        Char kid = new Kid();
-        kid.setPosition( new Point (5,5) );
-
-        kid.moveRight();
-        assertEquals( kid.position.x,  6);
-        assertEquals( kid.position.y,  5);
-    }
-
-    @Test
-    public void MoveUp(){
-        Char kid = new Kid();
-        kid.setPosition( new Point (5,5) );
-
-        kid.moveUp();
-        assertEquals( kid.position.x,  5);
-        assertEquals( kid.position.y,  6);
-    }
-
-    @Test
-    public void MoveDown(){
-        Char kid = new Kid();
-        kid.setPosition( new Point (5,5) );
-
-        kid.moveDown();
-        assertEquals( kid.position.x,  5);
-        assertEquals( kid.position.y,  4);
-    }
-    
+  
     
 }

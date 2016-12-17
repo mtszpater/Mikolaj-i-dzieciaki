@@ -10,27 +10,25 @@ import static org.junit.Assert.assertEquals;
  */
 public class PointTest {
 
+  
     @Test
-    public void leavingBoardCount(){
-        Point point = new Point( 0, 0);
-        point.setX(31);
-        point.setY(31);
-        
-        assertEquals(point.x, 0);
-        assertEquals(point.x, 0);
+    public void xIsBiggerThanRange(){
+        Point point = new Point(0,0);
+        point.setX( 30 );
+        assertEquals(0, point.x);
     }
     
     @Test
-    public void leavingBoard(){
-        Point point = new Point( 0, 0 );
+    public void isSmallerThanRange(){
+        Point point = new Point(0,0);
         point.setX(-1);
-        point.setY(-1);
-        
-        assertEquals(point.x, 29);
-        assertEquals(point.y, 29);
+        assertEquals(29, point.x);
     }
     
-    
-    
-    
+    @Test
+    public void inCorner(){
+        Point point = new Point(0,0);
+        point.setX( 601 );
+        assertEquals(0, point.x);
+    }
 }

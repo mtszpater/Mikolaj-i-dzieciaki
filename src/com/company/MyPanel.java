@@ -30,7 +30,7 @@ public class MyPanel extends JPanel implements ActionListener {
     
     private void createBoard() {
         board = new Board();
-        board.createNewBoard(30);
+        board.createNewBoard(Configuration.BOARD_SIZE);
     }
 
     private void createSanta() {
@@ -66,6 +66,9 @@ public class MyPanel extends JPanel implements ActionListener {
             kid = kids.get(i);
             g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
         }
+        
+        if( board.get(santa.position) != null && board.get(santa.position) != santa )System.out.println("kolizja");
+        
         g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
     }
 

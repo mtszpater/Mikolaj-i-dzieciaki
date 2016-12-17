@@ -11,6 +11,8 @@ public abstract class Char {
     
     public String image;
     public Point position;
+    protected int dx;
+    protected int dy;
 
     private BufferedImage createImageIcon() {
         try {
@@ -31,19 +33,9 @@ public abstract class Char {
         this.position = position;
     }
 
-    public void moveLeft() { 
-        this.position.x -= 1;
-    };
 
-    public void moveRight(){
-        this.position.x += 1;
-    }
-    
-    public void moveUp(){
-        this.position.y += 1;
-    }
-    
-    public void moveDown(){
-        this.position.y -= 1;
+    public void move() {
+        this.position.setX(this.position.x + dx);
+        this.position.setY(this.position.y + dy);
     }
 }

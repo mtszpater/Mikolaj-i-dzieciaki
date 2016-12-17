@@ -33,7 +33,7 @@ public class Board {
         
         Point point = new Point(0,0);
         while( board[point.x][point.y] != null )
-            point.generateRandomPosition(size);
+            point.generateRandomPosition();
             
         board[point.x][point.y] = kid;
         numberOfCharsOnBoard++;

@@ -8,16 +8,8 @@ import java.awt.event.KeyEvent;
 
 public class Santa extends Char {
 
-    private int dx;
-    private int dy;
-
     public Santa() {
         this.image = "../../images/santa.png";
-    }
-
-    public void move() {
-        this.position.setX(this.position.x + dx);
-        this.position.setY(this.position.y + dy);
     }
 
     public void keyPressed(KeyEvent e) {
