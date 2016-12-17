@@ -39,7 +39,6 @@ public class Board {
         numberOfCharsOnBoard++;
         
         return point;
-
     }
 
     private int emptyPlaces() {

@@ -38,4 +38,5 @@ public abstract class Char {
         this.position.setX(this.position.x + dx);
         this.position.setY(this.position.y + dy);
     }
+    
 }
