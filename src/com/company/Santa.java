@@ -16,8 +16,8 @@ public class Santa extends Char {
     }
 
     public void move() {
-        this.position.x += dx;
-        this.position.y += dy;
+        this.position.setX(this.position.x + dx);
+        this.position.setY(this.position.y + dy);
     }
 
     public void keyPressed(KeyEvent e) {
