@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Random;
-
 /**
  * author @pater
  */
@@ -12,12 +10,6 @@ public class Point {
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-    
-    public void generateRandomPosition(){
-        Random random = new Random();
-        x = random.nextInt(Configuration.BOARD_SIZE);
-        y = random.nextInt(Configuration.BOARD_SIZE);
     }
 
     public void setX(int arg) {
