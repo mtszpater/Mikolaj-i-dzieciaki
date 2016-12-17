@@ -2,24 +2,32 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
  * author @pater
  */
-public class MyPanel extends JPanel  {
-    
-    Board board;
+public class MyPanel extends JPanel implements ActionListener {
+    private Timer timer;
+    private Board board;
     private ArrayList<Kid> kids = new ArrayList<>();
     private Santa santa;
+    private final int DELAY = 20;
     
     public MyPanel() {
         createBoard();
         createSanta();
         createKids();
+        createTimer();
         setPreferredSize(new Dimension(800, 600));
+        setFocusable(true);
+        addKeyListener(new TAdapter());
     }
-
+    
     private void createBoard() {
         board = new Board();
         board.createNewBoard(30);
@@ -31,6 +39,11 @@ public class MyPanel extends JPanel  {
         santa.setPosition(point);
     }
 
+    private void createTimer() {
+        timer = new Timer(DELAY, this);
+        timer.start();
+    }
+    
     private void createKids(){
         Kid kid;
         
@@ -43,6 +56,7 @@ public class MyPanel extends JPanel  {
             kids.add(kid);
         }
     }
+    
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -54,7 +68,24 @@ public class MyPanel extends JPanel  {
         }
         g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
     }
-    
-    
-    
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        santa.move();
+        repaint();
+    }
+
+    private class TAdapter extends KeyAdapter {
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            santa.keyReleased(e);
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            santa.keyPressed(e);
+        }
+    }
 }
