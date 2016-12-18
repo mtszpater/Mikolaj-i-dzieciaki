@@ -78,10 +78,6 @@ public class MyPanel extends JPanel implements ActionListener {
             System.out.println("kolizja");
         }
         
-        Kid thisKid = ConflictHandler.getKidFromNeighborhood(kids, santa);
-        if(thisKid != null) {
-            thisKid.grounded = true;
-        }
         
         g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
     }
@@ -89,6 +85,11 @@ public class MyPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Kid thisKid = ConflictHandler.getKidFromNeighborhood(kids, santa);
+        if(thisKid != null) {
+            thisKid.setAsGrounded();
+        }
+        
         santa.move();
         repaint();
     }

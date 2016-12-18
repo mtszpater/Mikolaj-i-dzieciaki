@@ -1,5 +1,7 @@
 package com.company.characters;
 
+import com.company.Configuration;
+
 import java.awt.event.KeyEvent;
 
 /**
@@ -9,7 +11,7 @@ import java.awt.event.KeyEvent;
 public class Santa extends Char {
 
     public Santa() {
-        this.image = "../../images/santa.png";
+        this.image = Configuration.SANTA_IMAGE;
     }
 
     public void keyPressed(KeyEvent e) {

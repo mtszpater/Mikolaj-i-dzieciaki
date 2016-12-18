@@ -1,6 +1,7 @@
 package com.company.characters;
 
-import javax.swing.*;
+import com.company.Configuration;
+
 import java.util.Random;
 
 /**
@@ -11,28 +12,13 @@ public class Kid extends Char{
     
     public Kid() {
         grounded = false;
-        image = "../../images/kid.png";
+        image = Configuration.KID_IMAGE;
 
-        movingInBackground();
+        KidRunner kidRunner = new KidRunner(this);
+        kidRunner.move();
         
     }
-
-    private void movingInBackground() {
-        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-            @Override
-            protected Void doInBackground() throws Exception {
-                while(!grounded) {
-                    Thread.sleep(2000);
-                    moveRandomWay();
-                    System.out.println("Current position : "+ position.x + " , " +  position.y );
-                }
-                image = "../../images/grounded.png";
-                return null;
-            }
-        };
-
-        worker.execute();
-    }
+    
 
     public void moveRandomWay() {
         Random random = new Random();
@@ -80,5 +66,10 @@ public class Kid extends Char{
         move();
         dy = 0;
         
+    }
+
+    public void setAsGrounded() {
+        grounded = true;
+        image = Configuration.KID_GROUNDED_IMAGE;
     }
 }
