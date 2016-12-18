@@ -51,12 +51,4 @@ public class Board {
         }
         return count;
     }
-
-    public void clearPosition(Point point) {
-        board[point.x][point.y] = null;
-    }
-
-    public void takeThePosition(Char kid) {
-        board[kid.position.x][kid.position.y] = kid;
-    }
 }

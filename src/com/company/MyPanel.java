@@ -27,8 +27,6 @@ public class MyPanel extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(800, 600));
         setFocusable(true);
         addKeyListener(new TAdapter());
-        
-
     }
     
     private void createBoard() {
@@ -69,7 +67,7 @@ public class MyPanel extends JPanel implements ActionListener {
             g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
         }
         
-        if( board.get(santa.position) != null && board.get(santa.position) != santa )System.out.println("kolizja");
+        if(ConflictHandler.isConflict(kids, santa)) System.out.println("kolizja");
         
         g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
     }
