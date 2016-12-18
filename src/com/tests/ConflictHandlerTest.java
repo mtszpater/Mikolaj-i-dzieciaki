@@ -60,21 +60,7 @@ public class ConflictHandlerTest {
     }
     
     @Test
-    public void ShouldReturnObjectWithConflict(){
-        ArrayList<Kid> kids = new ArrayList<>();
-
-        Santa santa = new Santa();
-        santa.setPosition(new Point(0,1));
-        Kid kid = new Kid();
-        kid.setPosition(new Point(0,1));
-        kids.add(kid);
-
-        assertEquals( ConflictHandler.getKidWithConflictFromList(kids, santa), kid);
-        
-    }
-
-    @Test
-    public void ShouldReturnNullWithConflict(){
+    public void ShouldBeGroundedRight(){
         ArrayList<Kid> kids = new ArrayList<>();
 
         Santa santa = new Santa();
@@ -83,8 +69,63 @@ public class ConflictHandlerTest {
         kid.setPosition(new Point(1,1));
         kids.add(kid);
 
-        assertEquals( ConflictHandler.getKidWithConflictFromList(kids, santa), null);
+        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
+        
+    }
+
+    @Test
+    public void ShouldBeGroundedLeft(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(2,1));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(1,1));
+        kids.add(kid);
+
+        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
 
     }
-    
+
+    @Test
+    public void ShouldBeGroundedUp(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(0,1));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(0,2));
+        kids.add(kid);
+
+        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
+
+    }
+
+    @Test
+    public void ShouldBeGroundedDown(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(0,2));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(0,1));
+        kids.add(kid);
+
+        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
+
+    }
+
+//    @Test
+//    public void ShouldReturnNullWithConflict(){
+//        ArrayList<Kid> kids = new ArrayList<>();
+//
+//        Santa santa = new Santa();
+//        santa.setPosition(new Point(0,1));
+//        Kid kid = new Kid();
+//        kid.setPosition(new Point(1,1));
+//        kids.add(kid);
+//
+//        assertEquals( ConflictHandler.getKidWithConflictFromList(kids, santa), null);
+//
+//    }
 }

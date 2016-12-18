@@ -26,6 +26,7 @@ public class Kid extends Char{
                     moveRandomWay();
                     System.out.println("Current position : "+ position.x + " , " +  position.y );
                 }
+                image = "../../images/grounded.png";
                 return null;
             }
         };
