@@ -17,8 +17,8 @@ public class ConflictHandlerTest {
         Santa santa = new Santa();
         santa.setPosition(new Point ( 0 , 1 ));
 
-        Kid kid;
-        ArrayList<Kid> kids = new ArrayList<>();
+        Char kid;
+        ArrayList<Char> kids = new ArrayList<>();
 
         for( int i = 0; i < 5; ++i){
             kid = new Kid();
@@ -36,7 +36,7 @@ public class ConflictHandlerTest {
         santa.setPosition(new Point ( 0 , 1 ));
 
         Kid kid;
-        ArrayList<Kid> kids = new ArrayList<>();
+        ArrayList<Char> kids = new ArrayList<>();
 
         for( int i = 0; i < 5; ++i){
             kid = new Kid();
@@ -46,7 +46,17 @@ public class ConflictHandlerTest {
         }
 
         assertEquals( ConflictHandler.isConflict( kids, santa ), true );
-    } 
+    }
     
+    @Test
+    public void CheckWhenItIsTheSameObject(){
+        ArrayList<Char> kids = new ArrayList<>();
+        
+        Santa santa = new Santa();
+        santa.setPosition(new Point(0,1));
+        kids.add(santa);
+        
+        assertEquals( ConflictHandler.isConflict(kids, santa), false);
+    }
     
 }

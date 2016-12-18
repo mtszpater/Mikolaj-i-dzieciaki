@@ -4,15 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
  * author @pater
  */
 public class MyPanel extends JPanel implements ActionListener {
-    private static final int NUMBER_OF_CHILDREN = 2;
     private Timer timer;
     private Board board;
     private ArrayList<Kid> kids = new ArrayList<>();
@@ -26,9 +23,11 @@ public class MyPanel extends JPanel implements ActionListener {
         createTimer();
         setPreferredSize(new Dimension(800, 600));
         setFocusable(true);
-        addKeyListener(new TAdapter());
+        addKeyListener(new SantaKeyAdapter(santa));
     }
+
     
+
     private void createBoard() {
         board = new Board();
         board.createNewBoard(Configuration.BOARD_SIZE);
@@ -48,7 +47,7 @@ public class MyPanel extends JPanel implements ActionListener {
     private void createKids(){
         Kid kid;
         
-        for( int i = 0; i < NUMBER_OF_CHILDREN; ++i){
+        for( int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i){
             kid = new Kid();
             Point point = board.setToRandomEmptyPlace(kid);
             kid.setPosition(point);
@@ -62,7 +61,7 @@ public class MyPanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         
         Kid kid;
-        for( int i = 0; i < NUMBER_OF_CHILDREN; ++i){
+        for( int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i){
             kid = kids.get(i);
             g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
         }
@@ -78,17 +77,5 @@ public class MyPanel extends JPanel implements ActionListener {
         santa.move();
         repaint();
     }
-
-    private class TAdapter extends KeyAdapter {
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-            santa.keyReleased(e);
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            santa.keyPressed(e);
-        }
-    }
+    
 }

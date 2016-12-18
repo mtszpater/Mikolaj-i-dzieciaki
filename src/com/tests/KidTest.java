@@ -54,4 +54,5 @@ public class KidTest {
 
         assertEquals(kid.position.y, 2);
     }
+    
 }
