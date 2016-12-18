@@ -1,5 +1,6 @@
 package com.tests;
 
+import com.company.Configuration;
 import com.company.Point;
 import com.company.characters.Char;
 import com.company.characters.Kid;
@@ -15,7 +16,7 @@ public class CharTest {
     @Test
     public void ShouldReturnPathToImage(){
         Char kid = new Kid();
-        assertEquals(kid.image, "../../images/kid.png");
+        assertEquals(kid.image, Configuration.KID_IMAGE);
     }
     
     @Test

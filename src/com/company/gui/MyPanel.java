@@ -1,8 +1,8 @@
 package com.company.gui;
 
+import com.company.AreaScanner;
 import com.company.Board;
 import com.company.Configuration;
-import com.company.ConflictHandler;
 import com.company.Point;
 import com.company.characters.Kid;
 import com.company.characters.Santa;
@@ -54,14 +54,17 @@ public class MyPanel extends JPanel implements ActionListener {
     
     private void createKids(){
         Kid kid;
-        
-        for( int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i){
+
+        int i = 0;
+        while (i < Configuration.NUMBER_OF_CHILDREN) {
             kid = new Kid();
             Point point = board.setToRandomEmptyPlace(kid);
             kid.setPosition(point);
             kids.add(kid);
-            
+            ++i;
         }
+        
+        
     }
     
     @Override
@@ -74,10 +77,14 @@ public class MyPanel extends JPanel implements ActionListener {
             g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
         }
         
-        if(ConflictHandler.isConflict(kids, santa)){
+        if(AreaScanner.isConflict(kids, santa)){
             System.out.println("kolizja");
         }
-        
+
+        Kid thisKid = AreaScanner.getKidFromNeighborhood(kids, santa);
+        if(thisKid != null) {
+            thisKid.setAsGrounded();
+        }
         
         g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
     }
@@ -85,10 +92,6 @@ public class MyPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Kid thisKid = ConflictHandler.getKidFromNeighborhood(kids, santa);
-        if(thisKid != null) {
-            thisKid.setAsGrounded();
-        }
         
         santa.move();
         repaint();

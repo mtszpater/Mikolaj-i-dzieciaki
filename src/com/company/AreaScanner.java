@@ -7,11 +7,11 @@ import java.util.ArrayList;
 /**
  * author @pater
  */
-public class ConflictHandler {
+public class AreaScanner {
     public static boolean isConflict(ArrayList<? extends Char> kids, Char santa) {
-        
-        for( int i = 0; i < kids.size(); ++ i ){
-            if (hasTheSamePosition(kids.get(i), santa) && itIsNotTheSameObject(kids.get(i), santa))
+
+        for (Char kid : kids) {
+            if (hasTheSamePosition(kid, santa) && itIsNotTheSameObject(kid, santa))
                 return true;
         }
         
@@ -29,8 +29,7 @@ public class ConflictHandler {
 
     public static Kid getKidFromNeighborhood(ArrayList<Kid> kids, Santa santa) {
         for( int i = 0; i < kids.size(); ++ i ){
-            if ( isInTheArea(kids.get(i), santa) && 
-                            itIsNotTheSameObject(kids.get(i), santa))
+            if ( isInTheArea(kids.get(i), santa) && itIsNotTheSameObject(kids.get(i), santa))
                 return kids.get(i);
         }
 
@@ -38,7 +37,14 @@ public class ConflictHandler {
     }
 
     private static boolean isInTheArea(Kid kid, Santa santa) {
-        return ifItIsAtTheTop(kid, santa) || ifItIsAtTheBottom(kid, santa)|| ifItIsOnTheLeft(kid, santa) || ifItIsOnTheRight(kid, santa);
+        return  ifItIsAtTheTop(kid, santa) ||
+                ifItIsAtTheBottom(kid, santa)|| 
+                ifItIsOnTheLeft(kid, santa) || 
+                ifItIsOnTheRight(kid, santa) || 
+                ifItIsOnTheLeftTop(kid, santa) || 
+                ifItIsOnTheRightTop(kid, santa) || 
+                ifItIsOnTheLeftDown(kid, santa) || 
+                ifItIsOnTheRightDown(kid, santa);
     }
 
     private static boolean ifItIsAtTheTop(Kid kid, Santa santa) {
@@ -55,5 +61,21 @@ public class ConflictHandler {
 
     private static boolean ifItIsOnTheRight(Kid kid, Santa santa) {
         return kid.position.x == santa.position.x-1 && kid.position.y == santa.position.y;
+    }
+
+    private static boolean ifItIsOnTheLeftTop(Kid kid, Santa santa) {
+        return kid.position.x == santa.position.x+1 && kid.position.y+1 == santa.position.y;
+    }
+
+    private static boolean ifItIsOnTheRightTop(Kid kid, Santa santa) {
+        return kid.position.x == santa.position.x-1 && kid.position.y+1 == santa.position.y;
+    }
+
+    private static boolean ifItIsOnTheLeftDown(Kid kid, Santa santa) {
+        return kid.position.x == santa.position.x+1 && kid.position.y-1 == santa.position.y;
+    }
+
+    private static boolean ifItIsOnTheRightDown(Kid kid, Santa santa) {
+        return kid.position.x == santa.position.x-1 && kid.position.y-1 == santa.position.y;
     }
 }

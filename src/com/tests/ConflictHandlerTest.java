@@ -1,6 +1,6 @@
 package com.tests;
 
-import com.company.ConflictHandler;
+import com.company.AreaScanner;
 import com.company.Point;
 import com.company.characters.*;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class ConflictHandlerTest {
             kids.add(kid);
         }
         
-        assertEquals( ConflictHandler.isConflict( kids, santa ), false );
+        assertEquals( AreaScanner.isConflict( kids, santa ), false );
     }
     
     @Test
@@ -47,7 +47,7 @@ public class ConflictHandlerTest {
             kids.add(kid);
         }
 
-        assertEquals( ConflictHandler.isConflict( kids, santa ), true );
+        assertEquals( AreaScanner.isConflict( kids, santa ), true );
     }
     
     @Test
@@ -58,7 +58,7 @@ public class ConflictHandlerTest {
         santa.setPosition(new Point(0,1));
         kids.add(santa);
         
-        assertEquals( ConflictHandler.isConflict(kids, santa), false);
+        assertEquals( AreaScanner.isConflict(kids, santa), false);
     }
     
     @Test
@@ -71,7 +71,7 @@ public class ConflictHandlerTest {
         kid.setPosition(new Point(1,1));
         kids.add(kid);
 
-        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
         
     }
 
@@ -85,7 +85,7 @@ public class ConflictHandlerTest {
         kid.setPosition(new Point(1,1));
         kids.add(kid);
 
-        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
 
     }
 
@@ -99,7 +99,7 @@ public class ConflictHandlerTest {
         kid.setPosition(new Point(0,2));
         kids.add(kid);
 
-        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
 
     }
 
@@ -113,21 +113,64 @@ public class ConflictHandlerTest {
         kid.setPosition(new Point(0,1));
         kids.add(kid);
 
-        assertEquals( ConflictHandler.getKidFromNeighborhood(kids, santa), kid);
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
 
     }
 
-//    @Test
-//    public void ShouldReturnNullWithConflict(){
-//        ArrayList<Kid> kids = new ArrayList<>();
-//
-//        Santa santa = new Santa();
-//        santa.setPosition(new Point(0,1));
-//        Kid kid = new Kid();
-//        kid.setPosition(new Point(1,1));
-//        kids.add(kid);
-//
-//        assertEquals( ConflictHandler.getKidWithConflictFromList(kids, santa), null);
-//
-//    }
+
+    @Test
+    public void ShouldBeGroundedLeftTop(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(0,2));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(1,1));
+        kids.add(kid);
+
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
+
+    }
+
+    @Test
+    public void ShouldBeGroundedRightTop(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(2,2));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(1,1));
+        kids.add(kid);
+
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
+
+    }
+
+    @Test
+    public void ShouldBeGroundedLeftDown(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(0,0));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(1,1));
+        kids.add(kid);
+
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
+
+    }
+
+    @Test
+    public void ShouldBeGroundedRightDown(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(2,0));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(1,1));
+        kids.add(kid);
+
+        assertEquals( AreaScanner.getKidFromNeighborhood(kids, santa), kid);
+
+    }
 }
