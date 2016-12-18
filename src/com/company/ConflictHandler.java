@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.characters.*;
+
 import java.util.ArrayList;
 
 /**

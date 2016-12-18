@@ -1,6 +1,8 @@
 package com.tests;
 
-import com.company.*;
+import com.company.ConflictHandler;
+import com.company.Point;
+import com.company.characters.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

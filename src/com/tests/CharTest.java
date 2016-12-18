@@ -1,6 +1,8 @@
 package com.tests;
 
-import com.company.*;
+import com.company.Point;
+import com.company.characters.Char;
+import com.company.characters.Kid;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

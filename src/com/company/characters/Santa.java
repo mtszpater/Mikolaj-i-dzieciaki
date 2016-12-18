@@ -1,4 +1,4 @@
-package com.company;
+package com.company.characters;
 
 import java.awt.event.KeyEvent;
 

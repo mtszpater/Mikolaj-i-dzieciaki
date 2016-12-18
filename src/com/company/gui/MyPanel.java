@@ -1,4 +1,12 @@
-package com.company;
+package com.company.gui;
+
+import com.company.Board;
+import com.company.Configuration;
+import com.company.ConflictHandler;
+import com.company.Point;
+import com.company.characters.Kid;
+import com.company.characters.Santa;
+import com.company.listeners.SantaKeyAdapter;
 
 import javax.swing.*;
 import java.awt.*;

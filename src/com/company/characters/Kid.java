@@ -1,4 +1,4 @@
-package com.company;
+package com.company.characters;
 
 import javax.swing.*;
 import java.util.Random;
@@ -7,7 +7,7 @@ import java.util.Random;
  * author @pater
  */
 public class Kid extends Char{
-    boolean grounded;
+    public boolean grounded;
     
     public Kid() {
         grounded = false;

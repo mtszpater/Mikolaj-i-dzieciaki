@@ -1,4 +1,6 @@
-package com.company;
+package com.company.listeners;
+
+import com.company.characters.Santa;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

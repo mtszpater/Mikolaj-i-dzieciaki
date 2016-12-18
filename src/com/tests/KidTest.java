@@ -1,6 +1,6 @@
 package com.tests;
 
-import com.company.Kid;
+import com.company.characters.Kid;
 import com.company.Point;
 import org.junit.Test;
 
