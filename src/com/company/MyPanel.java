@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * author @pater
  */
 public class MyPanel extends JPanel implements ActionListener {
+    private static final int NUMBER_OF_CHILDREN = 2;
     private Timer timer;
     private Board board;
     private ArrayList<Kid> kids = new ArrayList<>();
@@ -26,6 +27,8 @@ public class MyPanel extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(800, 600));
         setFocusable(true);
         addKeyListener(new TAdapter());
+        
+
     }
     
     private void createBoard() {
@@ -47,13 +50,12 @@ public class MyPanel extends JPanel implements ActionListener {
     private void createKids(){
         Kid kid;
         
-        for( int i = 0; i < 12; ++i){
+        for( int i = 0; i < NUMBER_OF_CHILDREN; ++i){
             kid = new Kid();
-
             Point point = board.setToRandomEmptyPlace(kid);
             kid.setPosition(point);
-            
             kids.add(kid);
+            
         }
     }
     
@@ -62,7 +64,7 @@ public class MyPanel extends JPanel implements ActionListener {
         super.paintComponent(g);
         
         Kid kid;
-        for( int i = 0; i < 12; ++i){
+        for( int i = 0; i < NUMBER_OF_CHILDREN; ++i){
             kid = kids.get(i);
             g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
         }
