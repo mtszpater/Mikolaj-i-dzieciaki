@@ -66,7 +66,12 @@ public class MyPanel extends JPanel implements ActionListener {
             g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
         }
         
-        if(ConflictHandler.isConflict(kids, santa)) System.out.println("kolizja");
+        if(ConflictHandler.isConflict(kids, santa)){
+            System.out.println("kolizja");
+            Kid thisKid = ConflictHandler.getKidWithConflictFromList(kids, santa);
+            thisKid.grounded = true;
+            
+        }
         
         g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
     }

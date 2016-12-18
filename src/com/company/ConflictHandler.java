@@ -24,4 +24,13 @@ public class ConflictHandler {
     private static boolean hasTheSamePosition(Char first, Char second) {
         return first.position.x == second.position.x && first.position.y == second.position.y;
     }
+
+    public static Kid getKidWithConflictFromList(ArrayList<Kid> kids, Santa santa) {
+        for( int i = 0; i < kids.size(); ++ i ){
+            if (hasTheSamePosition(kids.get(i), santa) && itIsNotTheSameObject(kids.get(i), santa))
+                return kids.get(i);
+        }
+
+        return null;
+    }
 }

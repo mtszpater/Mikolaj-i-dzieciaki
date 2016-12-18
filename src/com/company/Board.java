@@ -29,7 +29,7 @@ public class Board {
     }
     
     public Point setToRandomEmptyPlace(Char kid) {
-        if(emptyPlaces() == 0) return null;
+        if(numberOfEmptyPositions() == 0) return null;
         
         Point point = new Point(0,0);
         while( board[point.x][point.y] != null )
@@ -41,7 +41,7 @@ public class Board {
         return point;
     }
 
-    private int emptyPlaces() {
+    private int numberOfEmptyPositions() {
         int count = 0;
         
         for (int i = 0; i < size; i++) {

@@ -59,4 +59,32 @@ public class ConflictHandlerTest {
         assertEquals( ConflictHandler.isConflict(kids, santa), false);
     }
     
+    @Test
+    public void ShouldReturnObjectWithConflict(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(0,1));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(0,1));
+        kids.add(kid);
+
+        assertEquals( ConflictHandler.getKidWithConflictFromList(kids, santa), kid);
+        
+    }
+
+    @Test
+    public void ShouldReturnNullWithConflict(){
+        ArrayList<Kid> kids = new ArrayList<>();
+
+        Santa santa = new Santa();
+        santa.setPosition(new Point(0,1));
+        Kid kid = new Kid();
+        kid.setPosition(new Point(1,1));
+        kids.add(kid);
+
+        assertEquals( ConflictHandler.getKidWithConflictFromList(kids, santa), null);
+
+    }
+    
 }

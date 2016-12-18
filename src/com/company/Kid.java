@@ -7,23 +7,30 @@ import java.util.Random;
  * author @pater
  */
 public class Kid extends Char{
-
+    boolean grounded;
+    
     public Kid() {
+        grounded = false;
         image = "../../images/kid.png";
 
+        movingInBackground();
+        
+    }
+
+    private void movingInBackground() {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                while(true) {
+                while(!grounded) {
                     Thread.sleep(2000);
                     moveRandomWay();
                     System.out.println("Current position : "+ position.x + " , " +  position.y );
                 }
+                return null;
             }
         };
 
         worker.execute();
-        
     }
 
     public void moveRandomWay() {
