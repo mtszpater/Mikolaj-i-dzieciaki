@@ -96,10 +96,22 @@ public class GiftsHandlerTest {
         }
 
         assertEquals( giftHandler.getCount(), Configuration.SANTA_BAG_LIMIT);
-        
-        
-        
+    }
+    
+    @Test
+    public void IfITakeGiftIShouldDoNotHaveHim(){
+        GiftHandler giftHandler = GiftHandler.getInstance();
+        giftHandler.clear();
 
+
+        Gift gift = new Gift();
+        gift.setPosition(new Point(3, 5));
+
+
+        giftHandler.removedGiftFromList(gift);
+
+        assertEquals( giftHandler.getCount(), 0);
+        
     }
     
 }

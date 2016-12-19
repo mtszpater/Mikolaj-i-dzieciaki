@@ -9,10 +9,10 @@ import static java.lang.Thread.sleep;
 /**
  * author @pater
  */
-public class KidRunner {
-    Kid kid;
+class KidRunner {
+    private Kid kid;
     
-    public synchronized void move() {
+    synchronized void move() {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected synchronized Void doInBackground() throws Exception {
@@ -32,7 +32,7 @@ public class KidRunner {
         worker.execute();
     }
     
-    public KidRunner(Kid kid) {
+    KidRunner(Kid kid) {
         this.kid = kid;
     }
 }

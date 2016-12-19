@@ -47,4 +47,8 @@ public class GiftHandler {
         }
         return null;
     }
+
+    public void removedGiftFromList(Gift gift) {
+        gifts.remove(gift);
+    }
 }

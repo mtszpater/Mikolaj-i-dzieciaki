@@ -1,6 +1,7 @@
 package com.company.characters;
 
 import com.company.Configuration;
+import com.company.GiftHandler;
 
 import java.util.Random;
 
@@ -20,7 +21,7 @@ public class Kid extends Char{
         kidRunner.move();
     }
 
-    public synchronized void moveRandomWay() {
+    synchronized void moveRandomWay() {
         Random random = new Random();
         
         switch(random.nextInt(3)){
@@ -65,35 +66,14 @@ public class Kid extends Char{
         dy = 0;
     }
 
-    public void setAsGrounded() {
-        if( ! grounded) {
+    public void setAsGrounded(Gift gift) {
+        GiftHandler giftHandler = GiftHandler.getInstance();
+        if( ! grounded ) {
             grounded = true;
-            setToRandomToyImage();
+            image = gift.image;
+            position = gift.position;
+            giftHandler.removedGiftFromList(gift);
         }
-    }
-    
-    private void setToRandomToyImage(){
-        
-        Random random = new Random();
-        
-        switch( random.nextInt(4) ){
-            case 0:
-                image = Configuration.TOY_1_IMAGE;
-                break;
-            case 1:
-                image = Configuration.TOY_2_IMAGE;
-                break;
-            case 2:
-                image = Configuration.TOY_3_IMAGE;
-                break;
-            case 3:
-                image = Configuration.TOY_4_IMAGE;
-                break;
-            default:
-                image = Configuration.TOY_5_IMAGE;
-                break;
-        }
-        
     }
 
     public synchronized void play() {
