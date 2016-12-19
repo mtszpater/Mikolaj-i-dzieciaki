@@ -7,6 +7,7 @@ public class Configuration {
 
     /** SETTINGS **/
     public static final String GAME_TITLE = "Mikołaj i dzieciaki";
+    public static final int DELAY = 20;
     public static final int BOARD_SIZE = 30;
     public static final int BOARD_START = 0;
     public static final int WIDTH = 1440;
@@ -29,4 +30,5 @@ public class Configuration {
     public static final String TOY_4_IMAGE = "../../images/toy_3.png";
     public static final String TOY_5_IMAGE = "../../images/toy_4.png";
     public static final String PLAY_IMAGE = "../../images/playing.png";
+    
 }

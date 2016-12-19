@@ -75,8 +75,4 @@ public class Santa extends Char {
         }
         
     }
-    
-    
-    
-    
 }

@@ -18,7 +18,6 @@ class MyPanel extends JPanel implements ActionListener {
     private Board board;
     private Santa santa;
     private Drawer drawer;
-    private final int DELAY = 20;
     
     MyPanel() {
         createBoard();
@@ -46,7 +45,7 @@ class MyPanel extends JPanel implements ActionListener {
     }
     
     private void createTimer() {
-        timer = new Timer(DELAY, this);
+        timer = new Timer(Configuration.DELAY, this);
         timer.start();
     }
     
