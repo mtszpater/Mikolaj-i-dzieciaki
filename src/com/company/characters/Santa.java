@@ -12,7 +12,13 @@ import java.awt.event.KeyEvent;
 
 public class Santa extends Char {
 
-    public Santa() {
+    private static Santa ourInstance = new Santa();
+
+    public static Santa getInstance() {
+        return ourInstance;
+    }
+    
+    private Santa() {
         this.image = Configuration.SANTA_IMAGE;
     }
 

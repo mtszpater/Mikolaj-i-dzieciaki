@@ -13,11 +13,11 @@ import static org.junit.Assert.assertEquals;
 /**
  * author @pater
  */
-public class ConflictHandlerTest {
+public class AreaScannerTest {
     
     @Test
     public void ShouldNotBeConflictHere(){
-        Santa santa = new Santa();
+        Santa santa = Santa.getInstance();
         santa.setPosition(new Point ( 0 , 1 ));
 
         Char kid;
@@ -35,7 +35,7 @@ public class ConflictHandlerTest {
     
     @Test
     public void ShouldBeConflictHere(){
-        Santa santa = new Santa();
+        Santa santa = Santa.getInstance();
         santa.setPosition(new Point ( 0 , 1 ));
 
         Kid kid;
@@ -54,8 +54,8 @@ public class ConflictHandlerTest {
     @Test
     public void CheckWhenItIsTheSameObject(){
         ArrayList<Char> kids = new ArrayList<>();
-        
-        Santa santa = new Santa();
+
+        Santa santa = Santa.getInstance();
         santa.setPosition(new Point(0,1));
         kids.add(santa);
         

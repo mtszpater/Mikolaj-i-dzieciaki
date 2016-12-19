@@ -39,7 +39,7 @@ class MyPanel extends JPanel implements ActionListener {
     }
 
     private void createSanta() {
-        santa = new Santa();
+        santa = Santa.getInstance();
         Point point = board.setToRandomEmptyPlace(santa);
         santa.setPosition(point);
     }
