@@ -1,6 +1,8 @@
 package com.company.characters;
 
+import com.company.AreaScanner;
 import com.company.Configuration;
+import com.company.KidsHandler;
 import com.company.Point;
 
 import java.util.Random;
@@ -27,15 +29,40 @@ public class Kid extends Char{
         switch(random.nextInt(3)){
             case 0:
                 moveRight();
+                
+                if(AreaScanner.isConflict(KidsHandler.getInstance().getKids(), this)){
+                    moveLeft();
+                    moveRandomWay();
+                }
+                
                 break;
             case 1:
                 moveLeft();
+
+                if(AreaScanner.isConflict(KidsHandler.getInstance().getKids(), this)){
+                    moveRight();
+                    moveRandomWay();
+                }
+                
                 break;
             case 2:
                 moveUp();
+
+                if(AreaScanner.isConflict(KidsHandler.getInstance().getKids(), this)){
+                    moveDown();
+                    moveRandomWay();
+                }
+                
+                
                 break;
             default:
                 moveDown();
+
+                if(AreaScanner.isConflict(KidsHandler.getInstance().getKids(), this)){
+                    moveUp();
+                    moveRandomWay();
+                }
+                
                 break;
         }
     }

@@ -1,7 +1,7 @@
 package com.tests;
 
-import com.company.characters.Kid;
 import com.company.Point;
+import com.company.characters.Kid;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -102,6 +102,7 @@ public class KidTest {
         assertEquals(kid.position.x, 2);
         assertEquals(kid.position.y, 0);
     }
+    
     
     
 }
