@@ -1,7 +1,7 @@
 package com.company.characters;
 
 import com.company.Configuration;
-import com.company.GiftHandler;
+import com.company.Point;
 
 import java.util.Random;
 
@@ -67,24 +67,38 @@ public class Kid extends Char{
     }
 
     public void setAsGrounded(Gift gift) {
-        GiftHandler giftHandler = GiftHandler.getInstance();
-        if( ! grounded ) {
-            grounded = true;
+        if( ! grounded && gift.active ) {
             image = gift.image;
             position = gift.position;
-            giftHandler.removedGiftFromList(gift);
+            gift.active = false;
+            grounded = true;
         }
     }
 
+    public void moveTo(Point point) {
+        if( point.x > position.x ) {
+            moveRight();
+        }
+        else if( point.x < position.x ) {
+            moveLeft();
+        }
+        else if( point.y > position.y ){
+            moveUp();
+        }
+        else{
+            moveDown();
+        }
+    }
+    
     public synchronized void play() {
         Reminder reminder = new Reminder(2);
 
         image = Configuration.PLAY_IMAGE;
-        
+
         while( ! reminder.end){
             System.out.println("bawie sie");
-            
+
         }
-        
+
     }
 }

@@ -36,7 +36,7 @@ public class AreaScanner {
         return null;
     }
 
-    private static boolean isInTheArea(Kid kid, ObjectOnBoardImpl gift) {
+    private static boolean isInTheArea(Kid kid, Gift gift) {
         return  ifItIsAtTheTop(kid, gift) ||
                 ifItIsAtTheBottom(kid, gift)|| 
                 ifItIsOnTheLeft(kid, gift) || 
@@ -44,7 +44,8 @@ public class AreaScanner {
                 ifItIsOnTheLeftTop(kid, gift) || 
                 ifItIsOnTheRightTop(kid, gift) || 
                 ifItIsOnTheLeftDown(kid, gift) || 
-                ifItIsOnTheRightDown(kid, gift);
+                ifItIsOnTheRightDown(kid, gift)
+                && gift.active ;
     }
 
     private static boolean ifItIsAtTheTop(Kid kid, ObjectOnBoardImpl gift) {
@@ -77,5 +78,16 @@ public class AreaScanner {
 
     private static boolean ifItIsOnTheRightDown(Kid kid, ObjectOnBoardImpl gift) {
         return kid.position.x == gift.position.x-1 && kid.position.y-1 == gift.position.y;
+    }
+
+    public static boolean isObjectNear(Point point, ObjectOnBoardImpl object) {
+        if(isInRange(point.x, object.position.x) && isInRange(point.y, object.position.y)){
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isInRange(int arg_1, int arg_2) {
+        return arg_1 - arg_2 <= 4 && arg_1 - arg_2 >= -4;
     }
 }

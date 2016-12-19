@@ -9,6 +9,8 @@ import java.util.Random;
  */
 public class Gift extends ObjectOnBoardImpl{
 
+    public boolean active = true;
+    
     public Gift() {
         
         setToRandomToyImage();

@@ -94,7 +94,9 @@ class MyPanel extends JPanel implements ActionListener {
         
         for( int i = 0; i < giftHandler.getCount(); ++i){
             gift = giftHandler.getGiftByIndex(i);
-            g.drawImage(gift.getIcon(), gift.position.x * 26, gift.position.y * 20, 24, 24,  null);
+            if(gift.active) {
+                g.drawImage(gift.getIcon(), gift.position.x * 26, gift.position.y * 20, 24, 24, null);
+            }
         }
     }
 

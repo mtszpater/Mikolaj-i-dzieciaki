@@ -55,4 +55,53 @@ public class KidTest {
         assertEquals(kid.position.y, 2);
     }
     
+    @Test
+    public void ShouldMoveRight(){
+        Kid kid = new Kid();
+
+        kid.setPosition(new Point(2,1));
+        
+        kid.moveTo(new Point (4,1));
+        
+        assertEquals(kid.position.x, 3);
+        assertEquals(kid.position.y, 1);
+    }
+
+    @Test
+    public void ShouldMoveLeft(){
+        Kid kid = new Kid();
+
+        kid.setPosition(new Point(2,1));
+
+        kid.moveTo(new Point (0,1));
+
+        assertEquals(kid.position.x, 1);
+        assertEquals(kid.position.y, 1);
+    }
+
+    @Test
+    public void ShouldMoveUp(){
+        Kid kid = new Kid();
+
+        kid.setPosition(new Point(2,1));
+
+        kid.moveTo(new Point (2,3));
+
+        assertEquals(kid.position.x, 2);
+        assertEquals(kid.position.y, 2);
+    }
+
+    @Test
+    public void ShouldMoveDown(){
+        Kid kid = new Kid();
+
+        kid.setPosition(new Point(2,1));
+
+        kid.moveTo(new Point (2,0));
+
+        assertEquals(kid.position.x, 2);
+        assertEquals(kid.position.y, 0);
+    }
+    
+    
 }

@@ -209,4 +209,24 @@ public class AreaScannerTest {
 
     }
     
+    @Test
+    public void ShouldReturnTrueBecauseObjectIsNear(){
+
+        Santa santa = Santa.getInstance();
+        santa.setPosition(new Point(0,4));
+        
+        assertEquals(AreaScanner.isObjectNear(new Point(3,4), santa), true);
+        
+    }
+
+    @Test
+    public void ShouldReturnFalseBecauseObjectIsNotNear(){
+
+        Santa santa = Santa.getInstance();
+        santa.setPosition(new Point(8,4));
+
+        assertEquals(AreaScanner.isObjectNear(new Point(3,4), santa), false);
+
+    }
+    
 }
