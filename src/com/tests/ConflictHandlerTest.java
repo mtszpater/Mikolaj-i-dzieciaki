@@ -208,4 +208,5 @@ public class ConflictHandlerTest {
         assertEquals( AreaScanner.getKidFromNeighborhood(kids, giftHandler.getGiftOnPosition(new Point(2,0))), kid);
 
     }
+    
 }

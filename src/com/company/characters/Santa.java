@@ -35,7 +35,17 @@ public class Santa extends Char {
         if (key == KeyEvent.VK_DOWN) {
             dy = 1;
         }
-        
+
+        if(key == KeyEvent.VK_SPACE) {
+            putGift();
+        }
+    }
+
+    private void putGift() {
+        Gift gift = new Gift();
+        gift.setPosition(new Point( this.position.x, this.position.y ));
+        GiftHandler giftHandler = GiftHandler.getInstance();
+        giftHandler.addGiftToList(gift);
     }
 
     public void keyReleased(KeyEvent e) {
@@ -56,16 +66,6 @@ public class Santa extends Char {
 
         if (key == KeyEvent.VK_DOWN) {
             dy = 0;
-        }
-
-        if(key == KeyEvent.VK_SPACE) {
-            Gift gift = new Gift();
-            
-            
-            gift.setPosition(new Point( this.position.x, this.position.y ));
-
-            GiftHandler giftHandler = GiftHandler.getInstance();
-            giftHandler.addGiftToList(gift);
         }
         
     }

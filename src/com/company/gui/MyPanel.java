@@ -66,6 +66,9 @@ class MyPanel extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+        g.drawImage(new IconMaker(Configuration.BACKGROUND).createImageIcon(), 0,0, 800, 600 ,null);
+        
         drawKids(g);
         drawGifts(g);
         checkIfKidGetGift();
