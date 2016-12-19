@@ -16,7 +16,7 @@ public class Reminder {
     }
 
     class RemindTask extends TimerTask {
-        public void run() {
+        public synchronized void run() {
             end = true;
             timer.cancel(); //Terminate the timer thread
         }

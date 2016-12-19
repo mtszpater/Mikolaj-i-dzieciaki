@@ -33,9 +33,7 @@ public class MyPanel extends JPanel implements ActionListener {
         setFocusable(true);
         addKeyListener(new SantaKeyAdapter(santa));
     }
-
     
-
     private void createBoard() {
         board = new Board();
         board.createNewBoard(Configuration.BOARD_SIZE);
@@ -60,6 +58,7 @@ public class MyPanel extends JPanel implements ActionListener {
             kid = new Kid();
             Point point = board.setToRandomEmptyPlace(kid);
             kid.setPosition(point);
+            kid.initMoving();
             kids.add(kid);
             ++i;
         }

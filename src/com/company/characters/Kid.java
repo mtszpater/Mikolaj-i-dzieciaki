@@ -13,14 +13,14 @@ public class Kid extends Char{
     public Kid() {
         grounded = false;
         image = Configuration.KID_IMAGE;
-
-        KidRunner kidRunner = new KidRunner(this);
-        kidRunner.move();
-        
     }
     
+    public synchronized void initMoving(){
+        KidRunner kidRunner = new KidRunner(this);
+        kidRunner.move();
+    }
 
-    public void moveRandomWay() {
+    public synchronized void moveRandomWay() {
         Random random = new Random();
         
         switch(random.nextInt(3)){
@@ -39,33 +39,30 @@ public class Kid extends Char{
         }
     }
     
-    public void moveRight() {
+    public synchronized void moveRight() {
         dx += 1;
-        
-        move();
-        dx = 0;
+        moveAndClearPosition();
     }
 
-    public void moveLeft() {
+    public synchronized void moveLeft() {
         dx -= 1;
-
-        move();
-        dx = 0;
+        moveAndClearPosition();
     }
     
-    public void moveDown() {
+    public synchronized void moveDown() {
         dy -= 1;
-        
-        move();
-        dy = 0;
+        moveAndClearPosition();
     }
 
-    public void moveUp() {
+    public synchronized void moveUp() {
         dy += 1;
+        moveAndClearPosition();
+    }
 
+    private void moveAndClearPosition() {
         move();
+        dx = 0;
         dy = 0;
-        
     }
 
     public void setAsGrounded() {
@@ -99,7 +96,7 @@ public class Kid extends Char{
         
     }
 
-    public void play() {
+    public synchronized void play() {
         Reminder reminder = new Reminder(2);
 
         image = Configuration.PLAY_IMAGE;

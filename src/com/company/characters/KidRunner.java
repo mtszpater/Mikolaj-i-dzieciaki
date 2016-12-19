@@ -3,6 +3,8 @@ package com.company.characters;
 import javax.swing.*;
 import java.util.Random;
 
+import static java.lang.Thread.sleep;
+
 
 /**
  * author @pater
@@ -10,19 +12,18 @@ import java.util.Random;
 public class KidRunner {
     Kid kid;
     
-    public void move() {
+    public synchronized void move() {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
-            protected Void doInBackground() throws Exception {
+            protected synchronized Void doInBackground() throws Exception {
                     while (!kid.grounded) {
                         kid.moveRandomWay();
-                        System.out.println("Current position : " + kid.position.x + " , " + kid.position.y);
                         // TODO:
 //                        kid.play();
 //                        System.out.println("ZASYIAM " + kid.toString());
 //                        kid.image = Configuration.KID_IMAGE;
                         Random random = new Random();
-                        Thread.sleep(random.nextInt(5000));
+                        sleep(random.nextInt(1000));
                     }
                 return null;
             }
