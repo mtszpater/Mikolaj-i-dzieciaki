@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 /**
  * author @pater
  */
-public interface ObjectsOnBoard {
+public interface ObjectOnBoard {
     BufferedImage getIcon();
 
     void setPosition(Point position);

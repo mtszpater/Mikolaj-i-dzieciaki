@@ -1,6 +1,8 @@
 package com.company.characters;
 
 import com.company.Configuration;
+import com.company.GiftHandler;
+import com.company.Point;
 
 import java.awt.event.KeyEvent;
 
@@ -33,6 +35,7 @@ public class Santa extends Char {
         if (key == KeyEvent.VK_DOWN) {
             dy = 1;
         }
+        
     }
 
     public void keyReleased(KeyEvent e) {
@@ -54,5 +57,18 @@ public class Santa extends Char {
         if (key == KeyEvent.VK_DOWN) {
             dy = 0;
         }
+
+        if(key == KeyEvent.VK_SPACE) {
+            Gift gift = new Gift();
+            
+            
+            gift.setPosition(new Point( this.position.x, this.position.y ));
+
+            GiftHandler giftHandler = GiftHandler.getInstance();
+            giftHandler.addGiftToList(gift);
+        }
+        
     }
+    
+    
 }

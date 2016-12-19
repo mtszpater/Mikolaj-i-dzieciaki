@@ -1,9 +1,8 @@
 package com.company.gui;
 
-import com.company.AreaScanner;
-import com.company.Board;
-import com.company.Configuration;
+import com.company.*;
 import com.company.Point;
+import com.company.characters.Gift;
 import com.company.characters.Kid;
 import com.company.characters.Santa;
 import com.company.listeners.SantaKeyAdapter;
@@ -74,6 +73,13 @@ public class MyPanel extends JPanel implements ActionListener {
         for( int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i){
             kid = kids.get(i);
             g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
+        }
+
+        GiftHandler giftHandler = GiftHandler.getInstance();
+        
+        for( int i = 0; i < giftHandler.getCount(); ++i){
+            Gift gift = giftHandler.getGiftByIndex(i);
+            g.drawImage(gift.getIcon(), gift.position.x * 26, gift.position.y * 20, 24, 24,  null);
         }
         
         if(AreaScanner.isConflict(kids, santa)){

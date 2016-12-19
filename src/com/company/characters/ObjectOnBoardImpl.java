@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 /**
  * author @pater
  */
-abstract class ObjectOnBoardImpl implements ObjectsOnBoard {
+abstract class ObjectOnBoardImpl implements ObjectOnBoard {
     public String image;
     public Point position;
     
