@@ -2,7 +2,6 @@ package com.company;
 
 import com.company.characters.Gift;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -52,17 +51,6 @@ public class GiftHandler {
     public void removedGiftFromList(Gift gift) {
         gifts.remove(gift);
     }
-
-    public void drawGifts(Graphics g) {
-        GiftHandler giftHandler = GiftHandler.getInstance();
-        Gift gift;
-
-        for( int i = 0; i < giftHandler.getCount(); ++i){
-            gift = giftHandler.getGiftByIndex(i);
-            if(gift.active) {
-                g.drawImage(gift.getIcon(), gift.position.x * Configuration.WIDTH_SCALE, gift.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE, null);
-            }
-        }
-    }
+    
     
 }

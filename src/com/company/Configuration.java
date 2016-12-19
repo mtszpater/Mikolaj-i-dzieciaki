@@ -5,7 +5,8 @@ package com.company;
  */
 public class Configuration {
 
-    /** SETTINGS **/    
+    /** SETTINGS **/
+    public static final String GAME_TITLE = "Mikołaj i dzieciaki";
     public static final int BOARD_SIZE = 30;
     public static final int BOARD_START = 0;
     public static final int WIDTH = 1440;

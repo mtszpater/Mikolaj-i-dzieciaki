@@ -1,5 +1,7 @@
 package com.company.gui;
 
+import com.company.Configuration;
+
 import javax.swing.*;
 
 /**
@@ -7,7 +9,7 @@ import javax.swing.*;
  */
 public class MyFrame extends JFrame {
     public MyFrame() {
-        super("Rysowanie");
+        super(Configuration.GAME_TITLE);
         JPanel panel = new MyPanel();
         setResizable(false);
         add(panel);

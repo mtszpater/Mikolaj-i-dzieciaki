@@ -3,7 +3,6 @@ package com.company;
 import com.company.characters.Gift;
 import com.company.characters.Kid;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -34,19 +33,6 @@ public class KidsHandler {
             ++i;
         }
     }
-    
-    public void drawKids(Graphics g){
-        Kid kid;
-        for(int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i){
-            kid = kids.get(i);
-
-            if( kid.grounded )
-                g.drawImage(kid.getIcon(), kid.position.x * Configuration.WIDTH_SCALE, kid.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE,  Color.MAGENTA ,null);
-            else
-                g.drawImage(kid.getIcon(), kid.position.x * Configuration.WIDTH_SCALE, kid.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE ,null);
-
-        }
-    }
 
     public void checkIfKidGetGift() {
         GiftHandler giftHandler = GiftHandler.getInstance();
@@ -64,5 +50,9 @@ public class KidsHandler {
 
     public ArrayList<Kid> getKids() {
         return kids;
+    }
+
+    public Kid getKidByIndex(int index) {
+        return kids.get(index);
     }
 }

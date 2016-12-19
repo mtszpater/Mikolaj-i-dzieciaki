@@ -17,6 +17,7 @@ class MyPanel extends JPanel implements ActionListener {
     private Timer timer;
     private Board board;
     private Santa santa;
+    private Drawer drawer;
     private final int DELAY = 20;
     
     MyPanel() {
@@ -52,31 +53,17 @@ class MyPanel extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawBackground(g);
         checkIfKidGetGift();
-        drawKids(g);
-        drawGifts(g);
-        drawSanta(g);
-    }
 
-    private void drawBackground(Graphics g) {
-        g.drawImage(new IconMaker(Configuration.BACKGROUND).createImageIcon(), 0,0, Configuration.WIDTH, Configuration.HEIGHT ,null);
+        drawer = new Drawer(g);
+        drawer.drawBackground();
+        drawer.drawKids();
+        drawer.drawGifts();
+        drawer.drawSanta();
     }
 
     private void checkIfKidGetGift() {
         KidsHandler.getInstance().checkIfKidGetGift();
-    }
-
-    private void drawKids(Graphics g) {
-        KidsHandler.getInstance().drawKids(g);
-    }
-    
-    private void drawGifts(Graphics g) {
-        GiftHandler.getInstance().drawGifts(g);
-    }
-
-    private void drawSanta(Graphics g) {
-        g.drawImage(santa.getIcon(),santa.position.x * Configuration.WIDTH_SCALE, santa.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE,  null);
     }
 
     @Override
