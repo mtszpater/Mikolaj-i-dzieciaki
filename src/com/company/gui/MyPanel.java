@@ -68,36 +68,48 @@ public class MyPanel extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
-        Kid kid;
-        for( int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i){
-            kid = kids.get(i);
-            g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
-        }
+        drawKids(g);
+        drawGifts(g);
+        checkIfKidGetGift();
+        drawSanta(g);
+    }
 
+    private void drawSanta(Graphics g) {
+        g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
+    }
+
+    private void checkIfKidGetGift() {
         GiftHandler giftHandler = GiftHandler.getInstance();
         
         for( int i = 0; i < giftHandler.getCount(); ++i){
-            Gift gift = giftHandler.getGiftByIndex(i);
+            Kid thisKid = AreaScanner.getKidFromNeighborhood(kids, giftHandler.getGiftByIndex(i));
+            if (thisKid != null) {
+                thisKid.setAsGrounded();
+            }
+        }
+    }
+
+    private void drawGifts(Graphics g) {
+        GiftHandler giftHandler = GiftHandler.getInstance();
+        Gift gift;
+        
+        for( int i = 0; i < giftHandler.getCount(); ++i){
+            gift = giftHandler.getGiftByIndex(i);
             g.drawImage(gift.getIcon(), gift.position.x * 26, gift.position.y * 20, 24, 24,  null);
         }
-        
-        if(AreaScanner.isConflict(kids, santa)){
-            System.out.println("kolizja");
-        }
+    }
 
-        Kid thisKid = AreaScanner.getKidFromNeighborhood(kids, santa);
-        if(thisKid != null) {
-            thisKid.setAsGrounded();
+    private void drawKids(Graphics g) {
+        Kid kid;
+        for(int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i){
+            kid = kids.get(i);
+            g.drawImage(kid.getIcon(), kid.position.x * 26, kid.position.y * 20, 24, 24,  null);
         }
-        
-        g.drawImage(santa.getIcon(),santa.position.x * 26, santa.position.y * 20, 24, 24,  null);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
         santa.move();
         repaint();
     }

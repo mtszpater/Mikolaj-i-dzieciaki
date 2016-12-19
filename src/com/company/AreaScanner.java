@@ -27,55 +27,55 @@ public class AreaScanner {
         return first.position.x == second.position.x && first.position.y == second.position.y;
     }
 
-    public static Kid getKidFromNeighborhood(ArrayList<Kid> kids, Santa santa) {
+    public static Kid getKidFromNeighborhood(ArrayList<Kid> kids, Gift gift) {
         for( int i = 0; i < kids.size(); ++ i ){
-            if ( isInTheArea(kids.get(i), santa) && itIsNotTheSameObject(kids.get(i), santa))
+            if ( isInTheArea(kids.get(i), gift) )
                 return kids.get(i);
         }
 
         return null;
     }
 
-    private static boolean isInTheArea(Kid kid, Santa santa) {
-        return  ifItIsAtTheTop(kid, santa) ||
-                ifItIsAtTheBottom(kid, santa)|| 
-                ifItIsOnTheLeft(kid, santa) || 
-                ifItIsOnTheRight(kid, santa) || 
-                ifItIsOnTheLeftTop(kid, santa) || 
-                ifItIsOnTheRightTop(kid, santa) || 
-                ifItIsOnTheLeftDown(kid, santa) || 
-                ifItIsOnTheRightDown(kid, santa);
+    private static boolean isInTheArea(Kid kid, ObjectOnBoardImpl gift) {
+        return  ifItIsAtTheTop(kid, gift) ||
+                ifItIsAtTheBottom(kid, gift)|| 
+                ifItIsOnTheLeft(kid, gift) || 
+                ifItIsOnTheRight(kid, gift) || 
+                ifItIsOnTheLeftTop(kid, gift) || 
+                ifItIsOnTheRightTop(kid, gift) || 
+                ifItIsOnTheLeftDown(kid, gift) || 
+                ifItIsOnTheRightDown(kid, gift);
     }
 
-    private static boolean ifItIsAtTheTop(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x && kid.position.y == santa.position.y+1;
+    private static boolean ifItIsAtTheTop(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x && kid.position.y == gift.position.y+1;
     }
     
-    private static boolean ifItIsAtTheBottom(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x && kid.position.y == santa.position.y-1;
+    private static boolean ifItIsAtTheBottom(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x && kid.position.y == gift.position.y-1;
     }
     
-    private static boolean ifItIsOnTheLeft(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x+1 && kid.position.y == santa.position.y;
+    private static boolean ifItIsOnTheLeft(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x+1 && kid.position.y == gift.position.y;
     }
 
-    private static boolean ifItIsOnTheRight(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x-1 && kid.position.y == santa.position.y;
+    private static boolean ifItIsOnTheRight(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x-1 && kid.position.y == gift.position.y;
     }
 
-    private static boolean ifItIsOnTheLeftTop(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x+1 && kid.position.y+1 == santa.position.y;
+    private static boolean ifItIsOnTheLeftTop(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x+1 && kid.position.y+1 == gift.position.y;
     }
 
-    private static boolean ifItIsOnTheRightTop(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x-1 && kid.position.y+1 == santa.position.y;
+    private static boolean ifItIsOnTheRightTop(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x-1 && kid.position.y+1 == gift.position.y;
     }
 
-    private static boolean ifItIsOnTheLeftDown(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x+1 && kid.position.y-1 == santa.position.y;
+    private static boolean ifItIsOnTheLeftDown(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x+1 && kid.position.y-1 == gift.position.y;
     }
 
-    private static boolean ifItIsOnTheRightDown(Kid kid, Santa santa) {
-        return kid.position.x == santa.position.x-1 && kid.position.y-1 == santa.position.y;
+    private static boolean ifItIsOnTheRightDown(Kid kid, ObjectOnBoardImpl gift) {
+        return kid.position.x == gift.position.x-1 && kid.position.y-1 == gift.position.y;
     }
 }

@@ -7,6 +7,7 @@ public class Configuration {
     public static final int BOARD_SIZE = 30;
     public static final int BOARD_START = 0;
     public static final int NUMBER_OF_CHILDREN = 12;
+    public static final int SANTA_BAG_LIMIT = 2 * NUMBER_OF_CHILDREN;
     public static String SANTA_IMAGE = "../../images/santa.png";
     public static String KID_IMAGE = "../../images/kid.png";
     public static String TOY_1_IMAGE = "../../images/toy_0.png";

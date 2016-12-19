@@ -18,10 +18,10 @@ public class GiftHandler {
     private GiftHandler(){
         gifts = new ArrayList<>();
     }
-    
 
     public void addGiftToList(Gift gift) {
-        gifts.add(gift);
+        if( getGiftOnPosition( gift.position ) == null  && getCount() < Configuration.SANTA_BAG_LIMIT)
+            gifts.add(gift);
     }
 
     public int getCount() {
@@ -38,5 +38,13 @@ public class GiftHandler {
     
     public Gift getGiftByIndex( int index ){
         return gifts.get(index);
+    }
+
+    public Gift getGiftOnPosition(Point point) {
+        for (Gift gift : gifts) {
+            if (gift.position.x == point.x && gift.position.y == point.y)
+                return gift;
+        }
+        return null;
     }
 }
