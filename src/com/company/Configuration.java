@@ -8,7 +8,7 @@ public class Configuration {
     /** SETTINGS **/
     public static final String GAME_TITLE = "Mikołaj i dzieciaki";
     public static final int DELAY = 20;
-    public static final int BOARD_SIZE = 30;
+    public static final int BOARD_SIZE = 22;
     public static final int BOARD_START = 0;
     public static final int WIDTH = 1440;
     public static final int HEIGHT = 760;

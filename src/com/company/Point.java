@@ -39,6 +39,6 @@ public class Point {
     }
 
     private boolean isInCorner(int arg) {
-        return arg == 30;
+        return arg == Configuration.BOARD_SIZE;
     }
 }
