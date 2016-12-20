@@ -17,9 +17,8 @@ class KidRunner {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected synchronized Void doInBackground() throws Exception {
-                    while (!kid.grounded) {
+                    while ( ! kid.grounded) {
                         kid.play(currentThread());
-                        System.out.println("ZASYIAM " + kid.toString());
                         Random random = new Random();
                         sleep(random.nextInt(5000));
                     }

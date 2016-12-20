@@ -99,7 +99,7 @@ public class Kid extends Char{
         }
     }
 
-    public void moveTo(Point point) {
+    public synchronized void moveTo(Point point) {
         if( point.x > position.x ) {
             moveRight();
         }
@@ -119,17 +119,18 @@ public class Kid extends Char{
         wakeUp();
         
         while( ! reminder.end && ! grounded ){
-            if (GiftIsNear()) return;
+            if (isGiftNear()) return;
 
             Santa santa = Santa.getInstance();
             if(AreaScanner.isObjectNear(position, santa)) {
                 moveTo(santa.position);
+                wait(thread, 500);
+                
             }
             else{
                 moveRandomWay();
+                wait(thread, 1000);
             }
-
-            wait(thread);
         }
         
         sleep();
@@ -139,7 +140,7 @@ public class Kid extends Char{
         image = Configuration.KID_IMAGE;
     }
     
-    private boolean GiftIsNear() {
+    private boolean isGiftNear() {
         GiftHandler giftHandler = GiftHandler.getInstance();
         Gift gift;
 
@@ -154,9 +155,9 @@ public class Kid extends Char{
         return false;
     }
 
-    private void wait(Thread thread) {
+    private void wait(Thread thread, int second) {
         try {
-            thread.sleep(1000);
+            thread.sleep(second);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
