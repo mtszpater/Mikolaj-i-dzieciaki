@@ -147,7 +147,7 @@ public class Kid extends Char{
         for( int i = 0; i < giftHandler.getCount(); ++i){
             gift = giftHandler.getGiftByIndex(i);
 
-            if(AreaScanner.isInTheArea(this, gift)) {
+            if(AreaScanner.isInTheArea(this, gift) && gift.active) {
                 setAsGrounded(gift);
                 return true;
             }

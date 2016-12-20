@@ -114,4 +114,19 @@ public class GiftsHandlerTest {
         
     }
     
+    @Test
+    public void getCountOfActiveGifts(){
+        GiftHandler giftHandler = GiftHandler.getInstance();
+        giftHandler.clear();
+
+
+        Gift gift = new Gift();
+        gift.setPosition(new Point(3, 5));
+        giftHandler.addGiftToList(gift);
+        giftHandler.getGiftOnPosition(new Point(3,5)).active = false;
+        
+        
+        assertEquals(giftHandler.getActiveGiftsCount(), 0);
+    }
+    
 }

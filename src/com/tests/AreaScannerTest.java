@@ -51,19 +51,16 @@ public class AreaScannerTest {
         assertEquals( AreaScanner.isConflict( kids, santa ), true );
     }
     
-//    @Test
-//    public void CheckWhenItIsTheSameObject(){
-//        ArrayList<Kid> kids = new ArrayList<>();
-//
-//        Santa santa = Santa.getInstance();
-//        santa.setPosition(new Point(0,1));
-//
-//        Kid santa = Santa.getInstance();
-//        santa.setPosition(new Point(0,1));
-//        kids.add(santa);
-//        
-//        assertEquals( AreaScanner.isConflict(kids, santa), false);
-//    }
+    @Test
+    public void CheckWhenItIsTheSameObject(){
+        ArrayList<Kid> kids = new ArrayList<>();
+        
+        Kid kid = new Kid();
+        kid.setPosition(new Point(0,1));
+        kids.add(kid);
+        
+        assertEquals( AreaScanner.isConflict(kids, kid), false);
+    }
     
     @Test
     public void ShouldBeGroundedRight(){

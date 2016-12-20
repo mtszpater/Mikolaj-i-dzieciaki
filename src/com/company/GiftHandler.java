@@ -51,6 +51,14 @@ public class GiftHandler {
     public void removedGiftFromList(Gift gift) {
         gifts.remove(gift);
     }
-    
-    
+
+
+    public int getActiveGiftsCount() {
+        int count = 0;
+        for (Gift gift : gifts) {
+            if( gift.active )
+                ++count;
+        }
+        return count;
+    }
 }
