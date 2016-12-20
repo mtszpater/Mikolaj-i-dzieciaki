@@ -20,16 +20,14 @@ public class KidsHandler {
 
     public void createKids(Board board){
         Kid kid;
-
-        int i = 0;
         
-        while (i < Configuration.NUMBER_OF_CHILDREN) {
+        for( int i = 0; i < Configuration.NUMBER_OF_CHILDREN; ++i ){
             kid = new Kid();
             Point point = board.setToRandomEmptyPlace(kid);
             kid.setPosition(point);
             kid.initMoving();
             kids.add(kid);
-            ++i;
+
         }
     }
 

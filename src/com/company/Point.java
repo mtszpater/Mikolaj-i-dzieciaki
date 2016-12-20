@@ -13,16 +13,16 @@ public class Point {
     }
 
     public void setX(int arg) {
-        arg = changeToPointInRange(arg);
+        arg = optimizePoints(arg);
         this.x = arg;
     }
 
     public void setY(int arg) {
-        arg = changeToPointInRange(arg);
+        arg = optimizePoints(arg);
         this.y = arg;
     }
 
-    private int changeToPointInRange(int arg) {
+    private int optimizePoints(int arg) {
         if(isBiggerThanBoardSize(arg)) arg = ( arg-1 ) % Configuration.BOARD_SIZE;
         if(isSmallerThanBoardSize(arg)) arg = (arg % Configuration.BOARD_SIZE) + Configuration.BOARD_SIZE;
         if(isInCorner(arg)) arg = 0;

@@ -25,16 +25,7 @@ public class AreaScanner {
     private static boolean hasTheSamePosition(Char first, Char second) {
         return first.position.x == second.position.x && first.position.y == second.position.y;
     }
-
-    public static Kid getKidFromNeighborhood(ArrayList<Kid> kids, Gift gift) {
-        for (Kid kid : kids) {
-            if (isInTheArea(kid, gift))
-                return kid;
-        }
-
-        return null;
-    }
-
+    
     public static boolean isInTheArea(Kid kid, Gift gift) {
         return  ifItIsAtTheTop(kid, gift) ||
                 ifItIsAtTheBottom(kid, gift)|| 
@@ -80,10 +71,10 @@ public class AreaScanner {
     }
 
     public static boolean isObjectNear(Point point, ObjectOnBoardImpl object) {
-        return isInRange(point.x, object.position.x) && isInRange(point.y, object.position.y);
+        return isInRangeOfFour(point.x, object.position.x) && isInRangeOfFour(point.y, object.position.y);
     }
 
-    private static boolean isInRange(int arg_1, int arg_2) {
+    private static boolean isInRangeOfFour(int arg_1, int arg_2) {
         return arg_1 - arg_2 <= 4 && arg_1 - arg_2 >= -4;
     }
 }
