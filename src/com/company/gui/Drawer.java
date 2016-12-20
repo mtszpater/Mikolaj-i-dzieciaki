@@ -40,7 +40,7 @@ class Drawer {
             kid = kidsHandler.getKidByIndex(i);
 
             if( kid.grounded )
-                g.drawImage(kid.getIcon(), kid.position.x * Configuration.WIDTH_SCALE, kid.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE,  Color.MAGENTA ,null);
+                g.drawImage(kid.getIcon(), kid.position.x * Configuration.WIDTH_SCALE, kid.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE ,null);
             else
                 g.drawImage(kid.getIcon(), kid.position.x * Configuration.WIDTH_SCALE, kid.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE ,null);
 

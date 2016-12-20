@@ -7,8 +7,8 @@ import javax.swing.*;
 /**
  * author @pater
  */
-public class MyFrame extends JFrame {
-    public MyFrame() {
+public class SantaHunting extends JFrame {
+    public SantaHunting() {
         super(Configuration.GAME_TITLE);
         JPanel panel = new MyPanel();
         setResizable(false);

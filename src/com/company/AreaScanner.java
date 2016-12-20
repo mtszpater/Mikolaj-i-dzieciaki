@@ -36,7 +36,7 @@ public class AreaScanner {
         return null;
     }
 
-    private static boolean isInTheArea(Kid kid, Gift gift) {
+    public static boolean isInTheArea(Kid kid, Gift gift) {
         return  ifItIsAtTheTop(kid, gift) ||
                 ifItIsAtTheBottom(kid, gift)|| 
                 ifItIsOnTheLeft(kid, gift) || 

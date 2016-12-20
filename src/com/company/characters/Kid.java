@@ -1,9 +1,6 @@
 package com.company.characters;
 
-import com.company.AreaScanner;
-import com.company.Configuration;
-import com.company.KidsHandler;
-import com.company.Point;
+import com.company.*;
 
 import java.util.Random;
 
@@ -95,7 +92,7 @@ public class Kid extends Char{
 
     public void setAsGrounded(Gift gift) {
         if( ! grounded && gift.active ) {
-            image = gift.image;
+            image = Configuration.KID_GROUNDED_IMAGE;
             position = gift.position;
             gift.active = false;
             grounded = true;
@@ -117,15 +114,56 @@ public class Kid extends Char{
         }
     }
     
-    public synchronized void play() {
-        Reminder reminder = new Reminder(2);
+    public synchronized void play(Thread thread) {
+        Reminder reminder = new Reminder(5);
+        wakeUp();
+        
+        while( ! reminder.end && ! grounded ){
+            if (GiftIsNear()) return;
 
-        image = Configuration.PLAY_IMAGE;
+            Santa santa = Santa.getInstance();
+            if(AreaScanner.isObjectNear(position, santa)) {
+                moveTo(santa.position);
+            }
+            else{
+                moveRandomWay();
+            }
 
-        while( ! reminder.end){
-            System.out.println("bawie sie");
-
+            wait(thread);
         }
-
+        
+        sleep();
     }
+    
+    private synchronized void wakeUp() {
+        image = Configuration.KID_IMAGE;
+    }
+    
+    private boolean GiftIsNear() {
+        GiftHandler giftHandler = GiftHandler.getInstance();
+        Gift gift;
+
+        for( int i = 0; i < giftHandler.getCount(); ++i){
+            gift = giftHandler.getGiftByIndex(i);
+
+            if(AreaScanner.isInTheArea(this, gift)) {
+                setAsGrounded(gift);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void wait(Thread thread) {
+        try {
+            thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private synchronized void sleep() {
+        image = Configuration.KID_SLEEPING_IMAGE;
+    }
+    
 }

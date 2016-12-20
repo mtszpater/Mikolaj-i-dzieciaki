@@ -1,10 +1,9 @@
 package com.company.characters;
 
-import com.company.AreaScanner;
-
 import javax.swing.*;
 import java.util.Random;
 
+import static java.lang.Thread.currentThread;
 import static java.lang.Thread.sleep;
 
 
@@ -19,24 +18,10 @@ class KidRunner {
             @Override
             protected synchronized Void doInBackground() throws Exception {
                     while (!kid.grounded) {
-
-                        Santa santa = Santa.getInstance();
-                        
-                        if(AreaScanner.isObjectNear(kid.position, santa)) {
-                            kid.moveTo(santa.position);
-                        }
-                        else{
-                            kid.moveRandomWay();
-                        }
-
-                        
-                        
-                        // TODO:
-//                        kid.play();
-//                        System.out.println("ZASYIAM " + kid.toString());
-//                        kid.image = Configuration.KID_IMAGE;
+                        kid.play(currentThread());
+                        System.out.println("ZASYIAM " + kid.toString());
                         Random random = new Random();
-                        sleep(random.nextInt(1000));
+                        sleep(random.nextInt(5000));
                     }
                 return null;
             }

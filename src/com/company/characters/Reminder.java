@@ -8,7 +8,7 @@ import java.util.TimerTask;
  */
 public class Reminder {
     Timer timer;
-    boolean end = false;
+    volatile boolean end = false;
 
     public Reminder(int seconds) {
         timer = new Timer();

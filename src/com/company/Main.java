@@ -1,10 +1,10 @@
 package com.company;
 
-import com.company.gui.MyFrame;
+import com.company.gui.SantaHunting;
 
 public class Main {
 
     public static void main(String[] args) {
-        MyFrame myFrame = new MyFrame();
+        SantaHunting sh = new SantaHunting();
     }
 }

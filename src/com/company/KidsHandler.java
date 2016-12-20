@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.characters.Gift;
 import com.company.characters.Kid;
 
 import java.util.ArrayList;
@@ -31,20 +30,6 @@ public class KidsHandler {
             kid.initMoving();
             kids.add(kid);
             ++i;
-        }
-    }
-
-    public void checkIfKidGetGift() {
-        GiftHandler giftHandler = GiftHandler.getInstance();
-        Gift gift;
-
-        for( int i = 0; i < giftHandler.getCount(); ++i){
-            gift = giftHandler.getGiftByIndex(i);
-
-            Kid thisKid = AreaScanner.getKidFromNeighborhood(kids, gift);
-            if (thisKid != null) {
-                thisKid.setAsGrounded(gift);
-            }
         }
     }
 

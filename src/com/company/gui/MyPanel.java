@@ -52,17 +52,12 @@ class MyPanel extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        checkIfKidGetGift();
 
         drawer = new Drawer(g);
         drawer.drawBackground();
         drawer.drawKids();
         drawer.drawGifts();
         drawer.drawSanta();
-    }
-
-    private void checkIfKidGetGift() {
-        KidsHandler.getInstance().checkIfKidGetGift();
     }
 
     @Override
