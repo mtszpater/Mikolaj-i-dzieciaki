@@ -21,9 +21,8 @@ class KidRunner {
             @Override
             protected synchronized Void doInBackground() throws Exception {
                 boolean gameIsActive = SantaHunting.getInstance().isActive();
-                boolean kidIsWithoutGift = ! kid.grounded;
                 
-                while ( kidIsWithoutGift && gameIsActive ) {
+                while ( ! kid.grounded  && gameIsActive ) {
                         kid.play(currentThread());
                         Random random = new Random();
                         sleep(random.nextInt(5000));

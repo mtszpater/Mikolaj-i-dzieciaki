@@ -117,8 +117,7 @@ public class Kid extends Char{
     public synchronized void play(Thread thread) {
         Reminder reminder = new Reminder(5);
 
-        if( ! grounded )
-            wakeUp();
+        wakeUp();
         
         while( ! reminder.end && ! grounded ){
             if (isGiftNear()) return;
@@ -133,9 +132,8 @@ public class Kid extends Char{
                 wait(thread, 1000);
             }
         }
-        
-        if( ! grounded )
-            sleep();
+
+        sleep();
     }
     
     private synchronized void wakeUp() {
