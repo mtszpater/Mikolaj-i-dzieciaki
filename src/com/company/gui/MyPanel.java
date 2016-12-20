@@ -20,15 +20,19 @@ class MyPanel extends JPanel implements ActionListener {
     private Drawer drawer;
     
     MyPanel() {
-        createBoard();
-        createSanta();
-        createKids();
-        createTimer();
+        createComponents();
         setPreferredSize(new Dimension(Configuration.WIDTH, Configuration.HEIGHT));
         setFocusable(true);
         addKeyListener(new SantaKeyAdapter(santa));
     }
-    
+
+    public void createComponents() {
+        createBoard();
+        createSanta();
+        createKids();
+        createTimer();
+    }
+
     private void createBoard() {
         board = new Board();
         board.createNewBoard(Configuration.BOARD_SIZE);
@@ -58,12 +62,22 @@ class MyPanel extends JPanel implements ActionListener {
         drawer.drawKids();
         drawer.drawGifts();
         drawer.drawSanta();
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        santa.move();
-        repaint();
+        SantaHunting gameStatus = SantaHunting.getInstance();
+        
+        if( gameStatus.isActive() ) {
+            santa.move();
+            gameStatus.updateStatus();
+            repaint();
+        }
+        else
+        {
+            gameStatus.showResult();
+        }
     }
     
 }

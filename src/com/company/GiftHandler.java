@@ -33,7 +33,7 @@ public class GiftHandler {
     }
 
     public void clear() {
-        gifts = new ArrayList<>();
+        ourInstance = new GiftHandler();
     }
     
     public Gift getGiftByIndex( int index ){

@@ -40,4 +40,21 @@ public class KidsHandler {
     public Kid getKidByIndex(int index) {
         return kids.get(index);
     }
+
+    public int getCountOfGroundedKids() {
+        int count = 0;
+        
+        for( int i = 0; i < kids.size(); ++i ){
+            if( kids.get(i).grounded ){
+        
+                ++count;
+            }
+        }
+        
+        return count;
+    }
+
+    public void clear() {
+        ourInstance = new KidsHandler();
+    }
 }

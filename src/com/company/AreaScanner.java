@@ -8,10 +8,10 @@ import java.util.ArrayList;
  * author @pater
  */
 public class AreaScanner {
-    public static boolean isConflict(ArrayList<? extends Char> kids, Char santa) {
+    public static boolean isConflict(ArrayList<Kid> kids, Char santa) {
 
-        for (Char kid : kids) {
-            if (hasTheSamePosition(kid, santa) && itIsNotTheSameObject(kid, santa))
+        for (Kid kid : kids) {
+            if (hasTheSamePosition(kid, santa) && itIsNotTheSameObject(kid, santa) && ! kid.grounded)
                 return true;
         }
         

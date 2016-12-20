@@ -5,6 +5,6 @@ import com.company.gui.SantaHunting;
 public class Main {
 
     public static void main(String[] args) {
-        SantaHunting sh = new SantaHunting();
+        SantaHunting.getInstance();
     }
 }

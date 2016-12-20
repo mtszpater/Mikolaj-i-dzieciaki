@@ -1,5 +1,8 @@
 package com.company.characters;
 
+
+import com.company.gui.SantaHunting;
+
 import javax.swing.*;
 import java.util.Random;
 
@@ -17,7 +20,8 @@ class KidRunner {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected synchronized Void doInBackground() throws Exception {
-                    while ( ! kid.grounded) {
+                boolean gameIsActive = SantaHunting.getInstance().isActive();
+                while ( ! kid.grounded && gameIsActive ) {
                         kid.play(currentThread());
                         Random random = new Random();
                         sleep(random.nextInt(5000));

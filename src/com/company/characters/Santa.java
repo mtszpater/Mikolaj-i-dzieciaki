@@ -75,4 +75,8 @@ public class Santa extends Char {
         }
         
     }
+
+    public void clear() {
+        ourInstance = new Santa();
+    }
 }
