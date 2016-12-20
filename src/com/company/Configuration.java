@@ -21,7 +21,7 @@ public class Configuration {
     public static final int SANTA_BAG_LIMIT = 2 * NUMBER_OF_CHILDREN;
     
     /** IMAGES **/
-    public static final String BACKGROUND = "../../images/background.png";
+    public static final String BACKGROUND = "../../images/background.jpg";
     public static final String SANTA_IMAGE = "../../images/santa.png";
     public static final String KID_IMAGE = "../../images/kid.png";
     public static final String KID_SLEEPING_IMAGE = "../../images/kid-sleeping.png";
