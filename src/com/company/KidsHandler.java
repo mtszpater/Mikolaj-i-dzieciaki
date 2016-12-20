@@ -43,18 +43,13 @@ public class KidsHandler {
 
     public int getCountOfGroundedKids() {
         int count = 0;
-        
-        for( int i = 0; i < kids.size(); ++i ){
-            if( kids.get(i).grounded ){
-        
+
+        for (Kid kid : kids) {
+            if (kid.grounded) {
                 ++count;
             }
         }
         
         return count;
-    }
-
-    public void clear() {
-        ourInstance = new KidsHandler();
     }
 }

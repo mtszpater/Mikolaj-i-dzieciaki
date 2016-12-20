@@ -116,16 +116,17 @@ public class Kid extends Char{
     
     public synchronized void play(Thread thread) {
         Reminder reminder = new Reminder(5);
-        wakeUp();
+
+        if( ! grounded )
+            wakeUp();
         
         while( ! reminder.end && ! grounded ){
             if (isGiftNear()) return;
-
+            
             Santa santa = Santa.getInstance();
             if(AreaScanner.isObjectNear(position, santa)) {
                 moveTo(santa.position);
                 wait(thread, 500);
-                
             }
             else{
                 moveRandomWay();
@@ -133,7 +134,8 @@ public class Kid extends Char{
             }
         }
         
-        sleep();
+        if( ! grounded )
+            sleep();
     }
     
     private synchronized void wakeUp() {

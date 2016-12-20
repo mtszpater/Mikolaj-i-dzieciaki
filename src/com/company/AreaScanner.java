@@ -16,7 +16,6 @@ public class AreaScanner {
         }
         
         return false;
-        
     }
 
     private static boolean itIsNotTheSameObject(Char first, Char second) {
@@ -28,9 +27,9 @@ public class AreaScanner {
     }
 
     public static Kid getKidFromNeighborhood(ArrayList<Kid> kids, Gift gift) {
-        for( int i = 0; i < kids.size(); ++ i ){
-            if ( isInTheArea(kids.get(i), gift) )
-                return kids.get(i);
+        for (Kid kid : kids) {
+            if (isInTheArea(kid, gift))
+                return kid;
         }
 
         return null;
@@ -48,43 +47,40 @@ public class AreaScanner {
                 && gift.active ;
     }
 
-    private static boolean ifItIsAtTheTop(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x && kid.position.y == gift.position.y+1;
+    private static boolean ifItIsAtTheTop(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x && kid.position.y == object.position.y+1;
     }
     
-    private static boolean ifItIsAtTheBottom(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x && kid.position.y == gift.position.y-1;
+    private static boolean ifItIsAtTheBottom(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x && kid.position.y == object.position.y-1;
     }
     
-    private static boolean ifItIsOnTheLeft(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x+1 && kid.position.y == gift.position.y;
+    private static boolean ifItIsOnTheLeft(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x+1 && kid.position.y == object.position.y;
     }
 
-    private static boolean ifItIsOnTheRight(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x-1 && kid.position.y == gift.position.y;
+    private static boolean ifItIsOnTheRight(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x-1 && kid.position.y == object.position.y;
     }
 
-    private static boolean ifItIsOnTheLeftTop(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x+1 && kid.position.y+1 == gift.position.y;
+    private static boolean ifItIsOnTheLeftTop(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x+1 && kid.position.y+1 == object.position.y;
     }
 
-    private static boolean ifItIsOnTheRightTop(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x-1 && kid.position.y+1 == gift.position.y;
+    private static boolean ifItIsOnTheRightTop(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x-1 && kid.position.y+1 == object.position.y;
     }
 
-    private static boolean ifItIsOnTheLeftDown(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x+1 && kid.position.y-1 == gift.position.y;
+    private static boolean ifItIsOnTheLeftDown(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x+1 && kid.position.y-1 == object.position.y;
     }
 
-    private static boolean ifItIsOnTheRightDown(Kid kid, ObjectOnBoardImpl gift) {
-        return kid.position.x == gift.position.x-1 && kid.position.y-1 == gift.position.y;
+    private static boolean ifItIsOnTheRightDown(Kid kid, ObjectOnBoardImpl object) {
+        return kid.position.x == object.position.x-1 && kid.position.y-1 == object.position.y;
     }
 
     public static boolean isObjectNear(Point point, ObjectOnBoardImpl object) {
-        if(isInRange(point.x, object.position.x) && isInRange(point.y, object.position.y)){
-            return true;
-        }
-        return false;
+        return isInRange(point.x, object.position.x) && isInRange(point.y, object.position.y);
     }
 
     private static boolean isInRange(int arg_1, int arg_2) {

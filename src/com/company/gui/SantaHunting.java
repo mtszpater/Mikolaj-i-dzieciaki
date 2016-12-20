@@ -25,13 +25,13 @@ public class SantaHunting extends JFrame{
         setResizable(false);
         add(panel);
         pack();
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         active = true;
     }
     
     void updateStatus() {
-        if( kidTouchSanta() || areAllKidsGrounded())
+        if( kidTouchSanta() || areAllKidsGrounded() )
         {
             active = false;
         }
@@ -39,12 +39,14 @@ public class SantaHunting extends JFrame{
 
     private boolean areAllKidsGrounded() {
         KidsHandler kids = KidsHandler.getInstance();
+        
         return kids.getCountOfGroundedKids() == kids.getKids().size();
     }
 
     private boolean kidTouchSanta() {
         KidsHandler kids = KidsHandler.getInstance();
         Santa santa = Santa.getInstance();
+        
         return AreaScanner.isConflict( kids.getKids(), santa );
     }
 
@@ -54,17 +56,16 @@ public class SantaHunting extends JFrame{
 
         int gifts = Configuration.SANTA_BAG_LIMIT - giftHandler.getActiveGiftsCount();
 
-        int reply = JOptionPane.showConfirmDialog(null, 
+        JOptionPane.showConfirmDialog(null, 
                 "Obdarowanych dzieciaków: "+ kids.getCountOfGroundedKids() + " z " + kids.getKids().size() + "\n"+
                 "Pozostałych prezentów: " + gifts + "\n" +
                 
                 "Autor gry: Mateusz Pater [mtszpater@gmail.com]"
                 
-                , "Koniec gry", JOptionPane.CLOSED_OPTION);
-        if (reply == JOptionPane.CLOSED_OPTION)
-        {
-            return;
-        }
+                , "Koniec gry", JOptionPane.DEFAULT_OPTION);
+        
+        
+        System.exit(0);
         
     }
 

@@ -11,9 +11,7 @@ import java.awt.event.KeyEvent;
  */
 
 public class Santa extends Char {
-
     private static Santa ourInstance = new Santa();
-
     public static Santa getInstance() {
         return ourInstance;
     }
@@ -74,9 +72,5 @@ public class Santa extends Char {
             dy = 0;
         }
         
-    }
-
-    public void clear() {
-        ourInstance = new Santa();
     }
 }
