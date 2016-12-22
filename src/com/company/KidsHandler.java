@@ -27,8 +27,8 @@ public class KidsHandler {
             kid.setPosition(point);
             kid.initMoving();
             kids.add(kid);
-
         }
+        
     }
 
     public ArrayList<Kid> getKids() {
@@ -50,4 +50,5 @@ public class KidsHandler {
         
         return count;
     }
+    
 }

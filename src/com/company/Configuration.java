@@ -17,7 +17,7 @@ public class Configuration {
     public static final int HEIGHT_SCALE = HEIGHT / BOARD_SIZE;
 
     /** GAME PROPERTIES **/
-    public static final int NUMBER_OF_CHILDREN = 2;
+    public static final int NUMBER_OF_CHILDREN = 3;
     public static final int SANTA_BAG_LIMIT = 2 * NUMBER_OF_CHILDREN;
     
     /** IMAGES **/
