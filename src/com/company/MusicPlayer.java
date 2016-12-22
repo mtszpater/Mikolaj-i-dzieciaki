@@ -7,8 +7,8 @@ import java.io.FileInputStream;
 /**
  * author @pater
  */
-public class MusicPlayer {
-    public void playBackground() {
+class MusicPlayer {
+    void playBackground() {
         try{
 
             FileInputStream fis = new FileInputStream("src/com/company/music.wav");
