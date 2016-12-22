@@ -11,7 +11,7 @@ class MusicPlayer {
     void playBackground() {
         try{
 
-            FileInputStream fis = new FileInputStream("src/com/company/music.wav");
+            FileInputStream fis = new FileInputStream("src/images/music.wav");
             Player playMP3 = new Player(fis);
 
             playMP3.play();

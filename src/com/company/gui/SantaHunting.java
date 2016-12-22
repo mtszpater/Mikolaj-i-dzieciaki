@@ -55,7 +55,7 @@ public class SantaHunting extends JFrame{
         KidsHandler kids = KidsHandler.getInstance();
         GiftHandler giftHandler = GiftHandler.getInstance();
 
-        int gifts = Configuration.SANTA_BAG_LIMIT - giftHandler.getActiveGiftsCount();
+        int gifts = Configuration.SANTA_BAG_LIMIT - giftHandler.getActiveGiftsCount() - kids.getCountOfGroundedKids();
 
         JOptionPane.showConfirmDialog(null, 
                 "Obdarowanych dzieciaków: "+ kids.getCountOfGroundedKids() + " z " + kids.getKids().size() + "\n"+
