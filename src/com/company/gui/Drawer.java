@@ -1,9 +1,6 @@
 package com.company.gui;
 
-import com.company.Configuration;
-import com.company.GiftHandler;
-import com.company.IconMaker;
-import com.company.KidsHandler;
+import com.company.*;
 import com.company.characters.Gift;
 import com.company.characters.Kid;
 import com.company.characters.Santa;
@@ -30,6 +27,7 @@ class Drawer {
                 g.drawImage(gift.getIcon(), gift.position.x * Configuration.WIDTH_SCALE, gift.position.y * Configuration.HEIGHT_SCALE, Configuration.ICON_SIZE, Configuration.ICON_SIZE, null);
             }
         }
+        
     }
 
     void drawKids(){

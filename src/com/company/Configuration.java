@@ -31,5 +31,6 @@ public class Configuration {
     public static final String TOY_3_IMAGE = "../../images/toy_2.png";
     public static final String TOY_4_IMAGE = "../../images/toy_3.png";
     public static final String TOY_5_IMAGE = "../../images/toy_4.png";
-    
+
+    public static final String BACKGROUND_MUSIC = "../../../images/music.wav";
 }

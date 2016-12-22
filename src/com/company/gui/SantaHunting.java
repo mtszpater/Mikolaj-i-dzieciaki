@@ -29,6 +29,7 @@ public class SantaHunting extends JFrame{
         setVisible(true);
         active = true;
     }
+
     
     void updateStatus() {
         if( kidTouchSanta() || areAllKidsGrounded() )
